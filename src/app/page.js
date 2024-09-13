@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import background from '@/app/images/main.png'
-import { Main } from './main/page'
+import { Main } from './container/main'
 
 export default function Home() {
   return (
