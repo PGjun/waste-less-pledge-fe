@@ -34,6 +34,7 @@ const PDFGenerator = () => {
     const ctx = canvas.getContext('2d')
 
     const startDrawing = (e) => {
+      e.preventDefault() // 터치 시 스크롤 막기
       setIsDrawing(true)
       draw(e)
     }
@@ -46,9 +47,18 @@ const PDFGenerator = () => {
     const draw = (e) => {
       if (!isDrawing) return
 
+      let x, y
       const rect = canvas.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
+
+      if (e.touches) {
+        // 터치 이벤트
+        x = e.touches[0].clientX - rect.left
+        y = e.touches[0].clientY - rect.top
+      } else {
+        // 마우스 이벤트
+        x = e.clientX - rect.left
+        y = e.clientY - rect.top
+      }
 
       ctx.lineWidth = 2
       ctx.lineCap = 'round'
@@ -60,16 +70,26 @@ const PDFGenerator = () => {
       ctx.moveTo(x, y)
     }
 
+    // 마우스 이벤트
     canvas.addEventListener('mousedown', startDrawing)
     canvas.addEventListener('mousemove', draw)
     canvas.addEventListener('mouseup', stopDrawing)
     canvas.addEventListener('mouseout', stopDrawing)
+
+    // 터치 이벤트
+    canvas.addEventListener('touchstart', startDrawing)
+    canvas.addEventListener('touchmove', draw)
+    canvas.addEventListener('touchend', stopDrawing)
 
     return () => {
       canvas.removeEventListener('mousedown', startDrawing)
       canvas.removeEventListener('mousemove', draw)
       canvas.removeEventListener('mouseup', stopDrawing)
       canvas.removeEventListener('mouseout', stopDrawing)
+
+      canvas.removeEventListener('touchstart', startDrawing)
+      canvas.removeEventListener('touchmove', draw)
+      canvas.removeEventListener('touchend', stopDrawing)
     }
   }, [isDrawing])
 
@@ -83,8 +103,6 @@ const PDFGenerator = () => {
           width: '340px',
           height: '700px',
           border: '1px solid black',
-          // backgroundImage: 'url("/images/main.png")',
-          // backgroundSize: 'cover',
         }}
       >
         <img src="/images/main.png" alt="ddd" width={340} height={300} />
