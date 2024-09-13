@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${pretandard.className} antialiased`}>{children}</body>
+      <body className={`${pretandard.className}`}>{children}</body>
     </html>
   )
 }
