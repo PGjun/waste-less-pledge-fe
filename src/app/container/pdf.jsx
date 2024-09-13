@@ -15,17 +15,17 @@ const PDFGenerator = () => {
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'px',
-        format: [canvas.width, canvas.height],
+        format: [canvas.width / 2, canvas.height / 2],
       })
 
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height)
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2)
       const pdfBlob = pdf.output('blob')
       const pdfFile = new File([pdfBlob], 'test.pdf', {
         type: 'application/pdf',
       })
       console.log(pdfFile)
+      pdf.save('test.pdf')
       return
-      pdf.save('canvas-content.pdf')
     })
   }
 
@@ -80,17 +80,18 @@ const PDFGenerator = () => {
         ref={containerRef}
         style={{
           position: 'relative',
-          width: '500px',
-          height: '900px',
+          width: '340px',
+          height: '700px',
           border: '1px solid black',
-          backgroundImage: 'url("/images/main.png")',
-          backgroundSize: 'cover',
+          // backgroundImage: 'url("/images/main.png")',
+          // backgroundSize: 'cover',
         }}
       >
+        <img src="/images/main.png" alt="ddd" width={340} height={300} />
         <canvas
           ref={canvasRef}
-          width={500}
-          height={900}
+          width={340}
+          height={700}
           style={{
             position: 'absolute',
             top: 0,
