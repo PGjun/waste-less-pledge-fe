@@ -109,16 +109,15 @@ const PDFGenerator = () => {
         <canvas
           ref={canvasRef}
           width={340}
-          height={700}
+          height={340}
           style={{
             position: 'absolute',
-            top: 0,
+            top: 340,
             left: 0,
             cursor: 'crosshair',
           }}
         />
       </div>
-
       <button onClick={generatePDF}>PDF 다운로드</button>
     </div>
   )

@@ -1,5 +1,7 @@
 import localFont from 'next/font/local'
 import './globals.css'
+import { Header } from './components/header'
+import { Footer } from './components/footer'
 
 const pretandard = localFont({
   src: './fonts/Pretendard-Regular.subset.woff2',
@@ -15,7 +17,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${pretandard.className}`}>{children}</body>
+      <body
+        className={`${pretandard.className} flex flex-col justify-between min-h-screen m-0`}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
