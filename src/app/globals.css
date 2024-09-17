@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'HanYoon';
+  font-weight: 200;
+  src: url('./fonts/나눔손글씨 한윤체.ttf') format('truetype');
+}

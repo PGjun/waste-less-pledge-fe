@@ -1,5 +1,5 @@
 export const Footer = () => {
   return (
-    <div className="flex justify-center items-center bg-slate-300 h-[70px]"></div>
+    <div className="flex justify-center items-center bg-[#e6ebec] h-[50px]"></div>
   )
 }

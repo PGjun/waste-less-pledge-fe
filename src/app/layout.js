@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${pretandard.className} flex flex-col justify-between min-h-screen m-0`}
+        className={`${pretandard.className} flex flex-col justify-between min-h-screen m-0 gap-[20px]`}
       >
         <Header />
         {children}
