@@ -1,27 +1,61 @@
 'use client'
 
-import { useState } from 'react'
-import PDFGenerator from './pdf'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-// import MyDocument from './pdf'
-// import { PDFDownloadLink } from '@react-pdf/renderer'
+
+const BASE_URL = 'http://43.201.46.179'
 
 export const Main = () => {
-  const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
-  const [userCnt, setUserCnt] = useState(10000)
+  const [isOpen, setIsOpen] = useState(false)
+  const [totalUsers, setTotalUsers] = useState(0)
   const [userName, setUserName] = useState('')
   const [isCheck1, setIsCheck1] = useState(false)
   const [isCheck2, setIsCheck2] = useState(false)
   const [isCheck3, setIsCheck3] = useState(false)
   const [isCheck4, setIsCheck4] = useState(false)
 
-  const handleRoute = () => {
+  const incrementUserCount = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/v1/user/increment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      if (response.ok) {
+        const data = await response.json()
+        console.log('User incremented successfully:', data)
+      } else {
+        console.error('Failed to increment user')
+      }
+    } catch (error) {
+      console.error('Error incrementing user:', error)
+    }
+  }
+
+  const handleSubmit = () => {
     if (!isCheck1 || !isCheck2 || !isCheck3 || !isCheck4)
       return alert('모든 서약내용을 체크해주세요!')
     if (!userName) return alert('이름을 입력해주세요!')
     setIsOpen(true)
+    incrementUserCount()
   }
+
+  useEffect(() => {
+    // API 호출
+    const fetchTotalUsers = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/v1/user/total-cnt`)
+        const data = await response.json()
+        setTotalUsers(data.totalCnt) // 응답 데이터에서 필요한 필드 추출
+      } catch (error) {
+        console.error('Error fetching total user count:', error)
+      }
+    }
+
+    fetchTotalUsers()
+  }, [])
 
   return (
     <div className="flex flex-col items-center">
@@ -50,7 +84,7 @@ export const Main = () => {
         <div>
           총{' '}
           <span className="text-[#00861f] font-bold text-[18px]">
-            {userCnt.toLocaleString()}
+            {totalUsers.toLocaleString()}
           </span>{' '}
           명이 참여했어요!
         </div>
@@ -152,7 +186,7 @@ export const Main = () => {
           />
         </div>
         <button
-          onClick={handleRoute}
+          onClick={handleSubmit}
           className="bg-[#00861f] w-[95px] text-center text-[12px] rounded-[20px] mt-[50px] text-white py-[5px]"
         >
           서약하기
