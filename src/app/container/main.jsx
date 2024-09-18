@@ -5,6 +5,26 @@ import { useRouter } from 'next/navigation'
 
 const BASE_URL = 'http://43.201.46.179'
 
+function openExternalBrowser() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera
+
+  // iOS 기기인지 확인
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    // iOS 기기에서는 window.open 사용
+    window.open('https://localhost:3000', '_blank')
+  }
+  // 안드로이드 기기인지 확인
+  else if (/android/i.test(userAgent)) {
+    // 안드로이드 기기에서는 intent 사용
+    window.location.href =
+      'intent://localhost:3000#Intent;scheme=https;package=com.android.chrome;end;'
+  }
+  // 그 외의 경우 (안드로이드와 iOS가 아닌 경우)
+  else {
+    alert('외부 브라우저로 열기 기능이 지원되지 않는 기기입니다.')
+  }
+}
+
 export const Main = () => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
@@ -70,6 +90,9 @@ export const Main = () => {
           #지구지키기
         </div>
       </div>
+      <a href="#" onclick={() => openExternalBrowser()}>
+        외부 브라우저로 열기
+      </a>
 
       <img
         src="/images/main.png"
