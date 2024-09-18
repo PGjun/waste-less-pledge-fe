@@ -8,24 +8,28 @@ const BASE_URL = 'http://43.201.46.179'
 function openExternalBrowser() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera
 
-  // iOS 기기인지 확인
-  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-    // iOS 기기에서는 window.open 사용
-    window.open('https://waste-less-pledge-fe.vercel.app', '_blank')
-  }
-  // 안드로이드 기기인지 확인
-  else if (/android/i.test(userAgent)) {
-    // 안드로이드 기기에서는 intent 사용
-    window.location.href =
-      'intent://waste-less-pledge-fe.vercel.app#Intent;scheme=https;package=com.android.chrome;end;'
-  }
-  // 그 외의 경우 (안드로이드와 iOS가 아닌 경우)
-  else {
-    alert('외부 브라우저로 열기 기능이 지원되지 않는 기기입니다.')
+  // 카카오톡 인앱 브라우저 감지
+  const isKakaoInApp = userAgent.includes('KAKAOTALK')
+
+  if (isKakaoInApp) {
+    // iOS 기기인지 확인
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // iOS 기기에서는 window.open 사용
+      window.open('https://waste-less-pledge-fe.vercel.app', '_blank')
+    }
+    // 안드로이드 기기인지 확인
+    else if (/android/i.test(userAgent)) {
+      // 안드로이드 기기에서는 intent 사용
+      window.location.href =
+        'intent://waste-less-pledge-fe.vercel.app#Intent;scheme=https;package=com.android.chrome;end;'
+    }
   }
 }
-
 export const Main = () => {
+  useEffect(() => {
+    openExternalBrowser() // 페이지 로드 시 외부 브라우저로 자동 이동
+  }, [])
+
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [totalUsers, setTotalUsers] = useState(0)
