@@ -10,20 +10,26 @@ function openExternalBrowser() {
 
   // 카카오톡 인앱 브라우저 감지
   const isKakaoInApp = userAgent.includes('KAKAOTALK')
+  const target_url = 'https://waste-less-pledge-fe.vercel.app'
 
   if (isKakaoInApp) {
-    // iOS 기기인지 확인
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      // iOS 기기에서는 window.location.href 사용
-      window.location.href = 'https://waste-less-pledge-fe.vercel.app'
-    }
-    // 안드로이드 기기인지 확인
-    else if (/android/i.test(userAgent)) {
-      // 안드로이드 기기에서는 intent 사용
-      window.location.href =
-        'intent://waste-less-pledge-fe.vercel.app#Intent;scheme=https;package=com.android.chrome;end;'
-    }
+    // 카카오톡 인앱 브라우저에서 외부 브라우저로 열기
+    window.location.href =
+      'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url)
   }
+  // else {
+  //   // iOS 기기인지 확인
+  //   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+  //     // iOS 기기에서는 window.location.href 사용
+  //     window.location.href = target_url;
+  //   }
+  //   // 안드로이드 기기인지 확인
+  //   else if (/android/i.test(userAgent)) {
+  //     // 안드로이드 기기에서는 intent 사용
+  //     window.location.href =
+  //       'intent://waste-less-pledge-fe.vercel.app#Intent;scheme=https;package=com.android.chrome;end;';
+  //   }
+  // }
 }
 
 export const Main = () => {
