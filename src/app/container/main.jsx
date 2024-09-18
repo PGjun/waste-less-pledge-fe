@@ -94,9 +94,6 @@ export const Main = () => {
           #지구지키기
         </div>
       </div>
-      <a href="#" onclick={() => openExternalBrowser()}>
-        외부 브라우저로 열기
-      </a>
 
       <img
         src="/images/main.png"
