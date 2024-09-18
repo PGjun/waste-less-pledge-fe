@@ -17,7 +17,7 @@ export const Main = () => {
 
   const incrementUserCount = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/v1/user/increment`, {
+      const response = await fetch(`/api/increment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,9 +46,9 @@ export const Main = () => {
     // API 호출
     const fetchTotalUsers = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/v1/user/total-cnt`)
+        const response = await fetch(`/api/total-cnt`)
         const data = await response.json()
-        setTotalUsers(data.totalCnt) // 응답 데이터에서 필요한 필드 추출
+        setTotalUsers(data.total_cnt) // 응답 데이터에서 필요한 필드 추출
       } catch (error) {
         console.error('Error fetching total user count:', error)
       }
