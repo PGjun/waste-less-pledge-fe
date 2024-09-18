@@ -14,8 +14,8 @@ function openExternalBrowser() {
   if (isKakaoInApp) {
     // iOS 기기인지 확인
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      // iOS 기기에서는 window.open 사용
-      window.open('https://waste-less-pledge-fe.vercel.app', '_blank')
+      // iOS 기기에서는 window.location.href 사용
+      window.location.href = 'https://waste-less-pledge-fe.vercel.app'
     }
     // 안드로이드 기기인지 확인
     else if (/android/i.test(userAgent)) {
@@ -25,6 +25,7 @@ function openExternalBrowser() {
     }
   }
 }
+
 export const Main = () => {
   useEffect(() => {
     openExternalBrowser() // 페이지 로드 시 외부 브라우저로 자동 이동
