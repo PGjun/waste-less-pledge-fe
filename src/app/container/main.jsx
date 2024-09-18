@@ -11,13 +11,13 @@ function openExternalBrowser() {
   // iOS 기기인지 확인
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
     // iOS 기기에서는 window.open 사용
-    window.open('https://localhost:3000', '_blank')
+    window.open('https://waste-less-pledge-fe.vercel.app', '_blank')
   }
   // 안드로이드 기기인지 확인
   else if (/android/i.test(userAgent)) {
     // 안드로이드 기기에서는 intent 사용
     window.location.href =
-      'intent://localhost:3000#Intent;scheme=https;package=com.android.chrome;end;'
+      'intent://waste-less-pledge-fe.vercel.app#Intent;scheme=https;package=com.android.chrome;end;'
   }
   // 그 외의 경우 (안드로이드와 iOS가 아닌 경우)
   else {
