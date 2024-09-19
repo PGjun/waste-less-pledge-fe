@@ -69,14 +69,14 @@ const PDFGenerator = ({ userName }) => {
             height={30}
             className=""
           />
-          <div className="flex gap-[10px] mt-[25px] text-[12px] items-end">
+          <div className="flex gap-[9px] mt-[25px] text-[12px] items-end">
             <span className="leading-[10px]">저</span>
             <span className="text-[14px] text-[#00861f] font-bold leading-[12px]">
               {userName}
             </span>
             <span className="leading-[10px]">은(는)</span>
           </div>
-          <div className="text-[9px] mt-[25px] text-center flex flex-col gap-[7px]">
+          <div className="text-[10px] mt-[25px] text-center flex flex-col gap-[6px]">
             <div>장보기 전에 리스트를 작성하겠습니다.</div>
             <div>음식은 먹을 만큼만 담겠습니다.</div>
             <div>남기지 않고 맛있게 먹겠습니다.</div>
