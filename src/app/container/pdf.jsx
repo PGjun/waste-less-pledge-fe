@@ -69,27 +69,27 @@ const PDFGenerator = ({ userName }) => {
             height={30}
             className=""
           />
-          <div className="flex gap-[10px] mt-[25px] text-[10px] items-end">
+          <div className="flex gap-[10px] mt-[25px] text-[12px] items-end">
             <span className="leading-[10px]">저</span>
-            <span className="text-[12px] text-[#00861f] font-bold leading-[12px]">
+            <span className="text-[14px] text-[#00861f] font-bold leading-[12px]">
               {userName}
             </span>
             <span className="leading-[10px]">은(는)</span>
           </div>
-          <div className="text-[7px] mt-[25px] text-center flex flex-col gap-[7px]">
+          <div className="text-[9px] mt-[25px] text-center flex flex-col gap-[7px]">
             <div>장보기 전에 리스트를 작성하겠습니다.</div>
             <div>음식은 먹을 만큼만 담겠습니다.</div>
             <div>남기지 않고 맛있게 먹겠습니다.</div>
             <div>버릴때는 물기를 꼭 제거하겠습니다.</div>
           </div>
-          <div className="mt-[20px] text-[9px] font-bold text-[#00861f]">
+          <div className="mt-[20px] text-[11px] font-bold text-[#00861f]">
             위 내용을 성실하게 실천할것을 서약합니다.
           </div>
-          <div className="flex items-end leading-[12px] gap-[16px] text-[7px] mt-[30px]">
+          <div className="flex items-end leading-[12px] gap-[16px] text-[9px] mt-[30px]">
             <div>서약일 : 2024년 9월 19일</div>
             <div className="flex items-end">
               자원순환 대표 :{' '}
-              <span className="ml-[5px] tracking-[5px] text-[#525252] font-[HanYoon] text-[20px] leading-[20px]">
+              <span className="ml-[5px] tracking-[5px] text-[#525252] font-[HanYoon] text-[22px] leading-[20px]">
                 {userName}
               </span>
             </div>
