@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
 
@@ -32,7 +32,7 @@ const PDFGenerator = ({ userName }) => {
       console.log(pdfFile)
 
       // PDF 다운로드
-      pdf.save('test.pdf')
+      pdf.save(`음식물쓰레기_줄이기_실천_서약서_[${userName}].pdf`)
     })
   }
 
