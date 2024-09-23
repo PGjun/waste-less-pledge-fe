@@ -51,10 +51,10 @@ const PDFGenerator = ({ userName }) => {
         }}
       >
         <img
-          src="/images/back-from-title.jpg"
+          src="/images/pledge-from-title.jpg"
           alt="pledge"
           width={340}
-          height={430}
+          height={431}
           className="absolute -z-10"
         />
 
