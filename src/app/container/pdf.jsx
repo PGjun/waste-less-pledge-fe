@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
 import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
+import dayjs from 'dayjs'
 
 const PDFGenerator = ({ userName }) => {
   const containerRef = useRef(null)
+  const today = dayjs().format('YYYY년 MM월 DD일')
 
   const generatePDF = () => {
     const input = containerRef.current
@@ -86,7 +88,7 @@ const PDFGenerator = ({ userName }) => {
             위 내용을 성실하게 실천할것을 서약합니다.
           </div>
           <div className="flex items-end leading-[12px] gap-[16px] text-[9px] mt-[25px]">
-            <div>서약일 : 2024년 9월 19일</div>
+            <div>서약일 : {today}</div>
             <div className="flex items-end">
               자원순환 대표 :{' '}
               <span className="ml-[5px] tracking-[5px] text-[#525252] font-[HanYoon] text-[22px] leading-[20px]">
