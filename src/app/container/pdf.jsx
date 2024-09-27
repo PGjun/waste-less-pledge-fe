@@ -53,24 +53,24 @@ const PDFGenerator = ({ userName }) => {
         }}
       >
         <img
-          src="/images/pledge-bg.png"
+          src="/images/pledge-from-title.jpg"
           alt="pledge"
           width={340}
-          height={430}
+          height={431}
           className="absolute -z-10"
         />
 
-        <div className="pt-[100px] flex flex-col items-center z-20">
+        <div className="pt-[135px] flex flex-col items-center z-20">
           {/* <button className="bg-[#00861f] rounded-[25px] text-white text-[9px]  h-[20px] px-[20px] leading-[20px]">
             음식물쓰레기 줄이기 실천 다짐 서약서
           </button> */}
-          <img
+          {/* <img
             src="/images/pledge-title.png"
             alt="pledge"
             width={170}
             height={30}
             className=""
-          />
+          /> */}
           <div className="flex gap-[9px] mt-[25px] text-[12px] items-end">
             <span className="leading-[10px]">저</span>
             <span className="text-[14px] text-[#00861f] font-bold leading-[12px]">
@@ -78,13 +78,13 @@ const PDFGenerator = ({ userName }) => {
             </span>
             <span className="leading-[10px]">은(는)</span>
           </div>
-          <div className="text-[10px] mt-[20px] text-center flex flex-col gap-[6px]">
+          <div className="text-[9.5px] mt-[15px] text-center flex flex-col gap-[6px]">
             <div>장보기 전에 리스트를 작성하겠습니다.</div>
             <div>음식은 먹을 만큼만 담겠습니다.</div>
             <div>남기지 않고 맛있게 먹겠습니다.</div>
             <div>버릴때는 물기를 꼭 제거하겠습니다.</div>
           </div>
-          <div className="mt-[20px] text-[11px] font-bold text-[#00861f]">
+          <div className="mt-[15px] text-[11px] font-bold text-[#00861f]">
             위 내용을 성실하게 실천할것을 서약합니다.
           </div>
           <div className="flex items-end leading-[12px] gap-[16px] text-[9px] mt-[25px]">
